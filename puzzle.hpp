@@ -78,6 +78,7 @@ bool SolvedState(int (&puzzle)[rows][cols]){
     return solved = true;
 }
 
+//Retruns H(n) value with the Missing tile heuristic
 template <int rows, int cols>
 int GetHn(int (&puzzle)[rows][cols]){
     int hn = 0;
@@ -90,34 +91,111 @@ int GetHn(int (&puzzle)[rows][cols]){
     return hn;
 }
 
+//Retruns H(n) value with the Manhattan District heuristic
+template <int rows, int cols>
+int Get_M_Distance(int (&puzzle)[rows][cols]){
+    int M_distance = 0;
+    int temp = 0;
+    
+    for (int i = 0; i < 3; ++i){
+        for (int j = 0; j < 3; ++j){
+            if(puzzle[i][j] != Solved_Puzzle[i][j]){
+                if(i == 0 && j == 0){ //Checking tile 1
+                    for (int x = 0; x < 3; ++x){
+                        for (int y = 0; y < 3; ++y){
+                            if(puzzle[x][y] == 1){
+                                temp = abs(x-i) + abs(y-j);
+                                M_distance = M_distance + temp;
+                            }
+                        }
+                    }
+                }
+                else if(i == 0 && j == 1){ //Checking tile 2
+                    for (int x = 0; x < 3; ++x){
+                        for (int y = 0; y < 3; ++y){
+                            if(puzzle[x][y] == 2){
+                                temp = abs(x-i) + abs(y-j);
+                                M_distance = M_distance + temp;
+                            }
+                        }
+                    }
+                }
+                else if(i == 0 && j == 2){ //Checking tile 3
+                    for (int x = 0; x < 3; ++x){
+                        for (int y = 0; y < 3; ++y){
+                            if(puzzle[x][y] == 3){
+                                temp = abs(x-i) + abs(y-j);
+                                M_distance = M_distance + temp;
+                            }
+                        }
+                    }
+                }
+                else if(i == 1 && j == 0){ //Checking tile 4
+                    for (int x = 0; x < 3; ++x){
+                        for (int y = 0; y < 3; ++y){
+                            if(puzzle[x][y] == 4){
+                                temp = abs(x-i) + abs(y-j);
+                                M_distance = M_distance + temp;
+                            }
+                        }
+                    }
+                }
+                else if(i == 1 && j == 1){ //Checking tile 5
+                    for (int x = 0; x < 3; ++x){
+                        for (int y = 0; y < 3; ++y){
+                            if(puzzle[x][y] == 5){
+                                temp = abs(x-i) + abs(y-j);
+                                M_distance = M_distance + temp;
+                            }
+                        }
+                    }
+                }
+                else if(i == 1 && j == 2){ //Checking tile 6
+                    for (int x = 0; x < 3; ++x){
+                        for (int y = 0; y < 3; ++y){
+                            if(puzzle[x][y] == 6){
+                                temp = abs(x-i) + abs(y-j);
+                                M_distance = M_distance + temp;
+                            }
+                        }
+                    }
+                }
+                else if(i == 2 && j == 0){ //Checking tile 7
+                    for (int x = 0; x < 3; ++x){
+                        for (int y = 0; y < 3; ++y){
+                            if(puzzle[x][y] == 7){
+                                temp = abs(x-i) + abs(y-j);
+                                M_distance = M_distance + temp;
+                            }
+                        }
+                    }
+                }
+                else if(i == 2 && j == 1){ //Checking tile 8
+                    for (int x = 0; x < 3; ++x){
+                        for (int y = 0; y < 3; ++y){
+                            if(puzzle[x][y] == 8){
+                                temp = abs(x-i) + abs(y-j);
+                                M_distance = M_distance + temp;
+                            }
+                        }
+                    }
+                }
+                else if(i == 2 && j == 2){ //Checking tile 9
+                    for (int x = 0; x < 3; ++x){
+                        for (int y = 0; y < 3; ++y){
+                            if(puzzle[x][y] == 0){
+                                temp = abs(x-i) + abs(y-j);
+                                M_distance = M_distance + temp;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    return M_distance;
+}
+
+
 #endif /* Puzzle_h */
 
-
-//if(n != 2 || parent->prev != 'U'){
-//    AssignPuzzle(temp, parent->GameState); //temp = puzzle
-//    Move_Puzzle(temp, 's', n,m);
-//    node* down = newNode(temp,n,m);
-//    parent->down = down;
-//    //Display_Puzzle(down->GameState);
-//    n = parent->n;
-//    m = parent->m;
-//    down->hn = GetHn(down->GameState);
-//    down->prev = 'D';
-//    Q.push_back(parent->down);
-//    Puzzles.push_back(parent->down);
-//    //cout << down->hn << endl;
-//}
-//
-//if(m != 2 || parent->prev != 'L'){
-//    AssignPuzzle(temp, parent->GameState); //temp = puzzle
-//    Move_Puzzle(temp, 'd', n,m);
-//    node* right = newNode(temp,n,m);
-//    parent->right = right;
-//   //Display_Puzzle(right->GameState);
-//    right->hn = GetHn(right->GameState);
-//    right->prev = 'R';
-//    Q.push_back(parent->right);
-//    Puzzles.push_back(parent->right);
-//    //cout << right->hn << endl;
-//}
-//}

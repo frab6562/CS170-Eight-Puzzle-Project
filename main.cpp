@@ -13,7 +13,7 @@ int main() {
     int n = 1;
     int m = 1;
     //This stores the value of the Default puzzle
-    int Default_Puzzle[9] = {1,3,6,5,0,2,4,7,8};
+    int Default_Puzzle[9] = {1,6,7,5,0,3,4,8,2};
     int puzzle[3][3];
     node* root;
     
@@ -66,28 +66,20 @@ int main() {
         }
     }
     
+    //Ask User which algoithm they want to run...
     int decision = 0;
     cout << "Chose an Algorithm. (1) for Unifrom Search, (2) for A* misplaced tile Search, (3) for A* Manhattan Search" << endl;
     cin >> decision;
-    
     if(decision == 1){
         Uniform_Search(root);
     }
-    else{
+    else if(decision == 2){
         A_Star_Search(root);
+    }
+    else{
+        A_Star_Search_Manhattan(root);
     }
     
     return 0;
 }
 
-
-
-//    //Gameplay loop
-//    bool solved = false;
-//    while(!solved){
-//        char move;
-//        cout << "Input move" << endl;
-//        cin >> move;
-//        Move_Puzzle(puzzle, move ,n, m);
-//        Display_Puzzle(puzzle);
-//    }
